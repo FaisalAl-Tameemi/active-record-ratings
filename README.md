@@ -68,8 +68,11 @@ pry -r './setup'
 
 **Note:** The database script to load your postgres database is found in `data.sql`. To import this into postgres, use `psql MY_DB_NAME < data.sql`.
 
+----
 
-Your goal is to do the following:
+
+## The Goal
+
 
 1. **Create a new movie**
   - `title`: "The answer to Life, The Universe and Everything."
@@ -78,16 +81,29 @@ Your goal is to do the following:
 2. **Create a new reviewer:**
   - `name`: "Sara"
 3. **Create a new rating**
-4. **Setup Movie Validations:**
+4. **Movie Validations:**
   - `title` is required
   - `year` is required and less than or equal to current year
-5. **Setup Rating Validations:**
+5. **Rating Validations:**
   - `score` is required and between (incl.) 1 and 5
   - `reviewer` is required
   - `movie` is required
-6. **Setup Reviewer Validations:**
+6. **Reviewer Validations:**
   - `name` is required
+7. **Movie Callbacks:**
+  - on movie deleted, must delete all ratings for that movie
+8. **Reviewer Callbacks:**
+  - on reviewer deleted, must delete all ratings for that reviewer
 
+
+## Stretch
+
+
+- [_medium_] Add `total_reviews` column to the reviewers table
+
+- [_short_] Adding a callback to the `Reviewer` model and use it to keep track of the total number of reviews any reviewer has given
+
+- [_long_] Answer the questions in the `_questions.md` file.
 
 ----
 
