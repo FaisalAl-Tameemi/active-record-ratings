@@ -56,9 +56,6 @@ _Below is an example of entries in this table:_
 
 
 
-**Note:** The database script to load your postgres database is found in `data.sql`. To import this into postgres, use `psql MY_DB_NAME < data.sql`.
-
-
 **Instructions:** Each problem asks you to write an active record query (and raw SQL query if you're into that).
 
 To run this code, we will be using **pry**. However, we also have to load the `setup.rb` file in order to connect to the database and load the models.
@@ -68,7 +65,28 @@ Run the following in your terminal to start pry with the setup:
 pry -r './setup'
 ```
 
-Your goal is to answer all questions found in the `questions.md` file
+
+**Note:** The database script to load your postgres database is found in `data.sql`. To import this into postgres, use `psql MY_DB_NAME < data.sql`.
+
+
+Your goal is to do the following:
+
+1. **Create a new movie**
+  - `title`: "The answer to Life, The Universe and Everything."
+  - `director`: "Faisal"
+  - `year`: "2016"
+2. **Create a new reviewer:**
+  - `name`: "Sara"
+3. **Create a new rating**
+4. **Setup Movie Validations:**
+  - `title` is required
+  - `year` is required and less than or equal to current year
+5. **Setup Rating Validations:**
+  - `score` is required and between (incl.) 1 and 5
+  - `reviewer` is required
+  - `movie` is required
+6. **Setup Reviewer Validations:**
+  - `name` is required
 
 
 ----

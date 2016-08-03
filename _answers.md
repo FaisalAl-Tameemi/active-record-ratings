@@ -22,18 +22,33 @@ _A2._
 ```ruby
 Movie
   .joins(:ratings)
+  .select('COUNT(*) AS "count", "movies"."year" as "year"')
   .where(ratings: {stars: [4,5]})
   .group(:year)
-  .count()
+  .order('count ASC')
+  .as_json # for pretty printing the results and data
 ```
 
-Which generates:
+Which generates the following in `sql`:
 
 ```sql
-SELECT COUNT(*) AS count_all, "movies"."year" AS movies_year
+SELECT COUNT(*) AS count, "movies"."year" as "year"
 FROM "movies"
 INNER JOIN "ratings" ON "ratings"."movie_id" = "movies"."id"
-WHERE "ratings"."stars" IN (4, 5) GROUP BY "movies"."year"
+WHERE "ratings"."stars" IN (4, 5)
+GROUP BY "movies"."year"
+ORDER BY count ASC
+```
+
+and outputs:
+
+```
+[
+  {"id"=>nil, "count"=>1, "movies_year"=>2009},
+  {"id"=>nil, "count"=>1, "movies_year"=>1939},
+  {"id"=>nil, "count"=>2, "movies_year"=>1981},
+  {"id"=>nil, "count"=>2, "movies_year"=>1937}
+]
 ```
 
 ----

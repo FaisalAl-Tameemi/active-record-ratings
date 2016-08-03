@@ -25,9 +25,9 @@ puts "Setting up Database (recreating tables) ..."
 
 ActiveRecord::Schema.define do
   # check if these tables exist, completely remove them if they do
-  drop_table :movies if ActiveRecord::Base.connection.table_exists?(:movies)
-  drop_table :reviewers if ActiveRecord::Base.connection.table_exists?(:reviewers)
-  drop_table :ratings if ActiveRecord::Base.connection.table_exists?(:ratings)
+  drop_table :movies, force: :cascade if ActiveRecord::Base.connection.table_exists?(:movies)
+  drop_table :reviewers, force: :cascade if ActiveRecord::Base.connection.table_exists?(:reviewers)
+  drop_table :ratings, force: :cascade if ActiveRecord::Base.connection.table_exists?(:ratings)
 
   # migrations
   create_table :movies do |m|
