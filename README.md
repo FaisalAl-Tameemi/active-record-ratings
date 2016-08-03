@@ -108,7 +108,7 @@ pry -r './setup'
 ----
 
 
-### Resources
+### Resources and Stretch Exercises
 
 - [Active Record w. Sqlite3](http://www.integralist.co.uk/posts/active-record.html)
 - [Data Modeling](http://sql.learncodethehardway.org/book/ex15.html)
